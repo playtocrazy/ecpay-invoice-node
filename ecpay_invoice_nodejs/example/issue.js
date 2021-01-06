@@ -32,16 +32,20 @@ let base_param = {
 	vat:"1" // 商品單價是否含稅，'1'為含稅價'、'2'為未稅價
 };
 
-let create = new ecpay_invoice({
-	merchantInfo: {
-		merchantID: "2000132",
-        hashKey: "ejCk326UnaZWKisg",
-        hashIV: "q9jcZX8Ib9LM8wYk"
+async function issueInvoice() {
+	let create = new ecpay_invoice({
+		merchantInfo: {
+			merchantID: "2000132",
+			hashKey: "ejCk326UnaZWKisg",
+			hashIV: "q9jcZX8Ib9LM8wYk"
+		}
+	});
+	try {
+		let res = await create.invoice_client.ecpay_invoice_issue(parameters = base_param);
+		console.log(res);
+	} catch (error) {
+		throw error
 	}
-});
-let res = create.invoice_client.ecpay_invoice_issue(parameters = base_param);
-res.then(function (result) {
-    console.log(result);
-}).catch(function (err) {
-    console.log(err);
-});
+}
+
+issueInvoice();

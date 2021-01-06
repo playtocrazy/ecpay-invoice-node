@@ -1,34 +1,67 @@
-# 綠界 電子發票介接Node.js 第一版
+# ECPay Invoice For Node.js
+
 ---
 
-## 1. 介紹
+## The differences
 
-  - 綠界對於有開立電子發票需求的會員，提供完整的電子發票開立介接API，並有多種功能可選擇使用。 本套件為Node.js版，可使用開立發票，發送開立發票通知，查詢發票明細等應用。
-  - 開立發票：
-    - 一般開立發票
-    - 延遲開立發票
-    - 暫存開立發票
-    - 開立發票折讓
-    - 作廢發票
-    - 作廢發票折讓
+This repository forked from [ECPay/Invoice_Node.js](https://github.com/ECPay/Invoice_Node.js)
+and using parameters injection instead of XML configuration.  
 
+## Install
 
-## 2. 安裝環境
-  - node-v6.11.0-x64  以上
-  - ECMAScipt6
+    yarn add ecpay-invoice-node
 
-## 3. 使用教學
-  - 使用者文件放置於Doc資料夾內，可供參閱
-  - SDK 適用綠界B2C電子發票API文件2.2.10之前版本, 不適用於3.0.0以後版本
-  - 串接網址 正式環境 https://einvoice.ecpay.com.tw/Invoice
+  OR  
 
+    npm install ecpay-invoice-node
 
+## How to use
 
-## 4. 聯絡我們
-  - 綠界技術服務工程師信箱: techsupport@ecpay.com.tw
+```javascript
+import ecpayInvoice from 'ecpay-invoice-node'
 
+let base_param = {
+    RelateNumber:"asc12323aasddFY", // 請帶30碼uid, ex: werntfg9os48trhw34etrwerh8ew2r
+    CustomerID:"12124", // 客戶代號，長度為20字元
+    CustomerIdentifier:"12345678", // 統一編號，長度為8字元
+    CustomerName:"綠先生", // 客戶名稱，長度為20字元
+    CustomerAddr:"台北市南港區三重路19-2號6-2樓()", // 客戶地址，長度為100字元
+    CustomerPhone:"0912345678", // 客戶電話，長度為20字元
+    CustomerEmail:"ying.wu@ecpay.com.tw", // 客戶信箱，長度為80字元
+    ClearanceMark:"", // 通關方式，僅可帶入'1'、'2'、''
+    Print:"1", // 列印註記，僅可帶入'0'、'1'
+    Donation:"0", // 捐贈註記，僅可帶入'1'、'0'
+    LoveCode:"", // 愛心碼，長度為7字元
+    CarruerType:"", // 載具類別，僅可帶入'1'、'2'、'3'、''
+    CarruerNum:"", // 載具編號，當載具類別為'2'時，長度為16字元，當載具類別為'3'時，長度為7字元
+    TaxType:"1", // 課稅類別，僅可帶入'1'、'2'、'3'、'9'
+    SalesAmount:"200", // 發票金額
+    InvoiceRemark:"", // 備註
+    ItemName:"洗衣精|洗髮乳", // 商品名稱，如果超過一樣商品時請以｜(為半形不可使用全形)分隔
+    ItemCount:"1|1", // 商品數量，如果超過一樣商品時請以｜(為半形不可使用全形)分隔
+    ItemWord:"瓶|罐", // 商品單位，如果超過一樣商品時請以｜(為半形不可使用全形)分隔
+    ItemPrice:"100|100", // 商品價格，如果超過一樣商品時請以｜(為半形不可使用全形)分隔
+    ItemTaxType:"", // 商品課稅別，如果超過一樣商品時請以｜(為半形不可使用全形)分隔，如果TaxType為9請帶值，其餘為空
+    ItemAmount:"100|100", // 商品合計，如果超過一樣商品時請以｜(為半形不可使用全形)分隔
+    ItemRemark:"test item|test item", // 商品備註，如果超過一樣商品時請以｜(為半形不可使用全形)分隔
+    InvType:"07", // 字軌類別，、'07'一般稅額
+    vat:"1" // 商品單價是否含稅，'1'為含稅價'、'2'為未稅價
+};
 
-
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
+async function issueInvoice() {
+    let create = new ecpay_invoice({
+        merchantInfo: {
+            merchantID: "2000132",
+            hashKey: "ejCk326UnaZWKisg",
+            hashIV: "q9jcZX8Ib9LM8wYk"
+        }
+    });
+    try {
+        let res = await create.invoice_client.ecpay_invoice_issue(parameters = base_param);
+        console.log(res);
+    } catch (error) {
+        throw error
+    }
+}
+issueInvoice();
+```
