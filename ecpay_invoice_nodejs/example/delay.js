@@ -36,7 +36,13 @@ let base_param = {
 	NotifyURL:"" // 開立完成時通知會員系統的網址
 };
 
-let create = new ecpay_invoice();
+let create = new ecpay_invoice({
+	merchantInfo: {
+		merchantID: "2000132",
+        hashKey: "ejCk326UnaZWKisg",
+        hashIV: "q9jcZX8Ib9LM8wYk"
+	}
+});
 let res = create.invoice_client.ecpay_invoice_delay(parameters = base_param);
 res.then(function (result) {
     console.log(result);

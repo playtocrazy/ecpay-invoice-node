@@ -19,7 +19,13 @@ let base_param = {
 	ItemAmount:"200.6|100.3|100.3" // 商品合計，如果超過一樣商品時請以｜分隔
 };
 
-let create = new ecpay_invoice();
+let create = new ecpay_invoice({
+	merchantInfo: {
+		merchantID: "2000132",
+        hashKey: "ejCk326UnaZWKisg",
+        hashIV: "q9jcZX8Ib9LM8wYk"
+	}
+});
 let res = create.invoice_client.ecpay_invoice_allowance(parameters = base_param);
 res.then(function (result) {
     console.log(result);

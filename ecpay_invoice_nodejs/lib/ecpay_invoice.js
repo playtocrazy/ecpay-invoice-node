@@ -7,11 +7,11 @@ const query_client = require('./ecpay_invoice/query_client.js');
 const notify_client = require('./ecpay_invoice/notify_client.js');
 
 class ECPayInvoice{
-    constructor(){
+    constructor(options){
         this.version = new version();
-        this.invoice_client = new invoice_client();
-        this.query_client = new query_client();
-        this.notify_client = new notify_client();
+        this.invoice_client = new invoice_client(options);
+        this.query_client = new query_client(options);
+        this.notify_client = new notify_client(options);
     }
 }
 module.exports = ECPayInvoice;

@@ -20,7 +20,13 @@ let base_param = {
 	ReturnURL:"http://127.0.0.1",
 };
 
-let create = new ecpay_invoice();
+let create = new ecpay_invoice({
+	merchantInfo: {
+		merchantID: "2000132",
+        hashKey: "ejCk326UnaZWKisg",
+        hashIV: "q9jcZX8Ib9LM8wYk"
+	}
+});
 let res = create.invoice_client.ecpay_invoice_allowancebycollegiate(parameters = base_param);
 res.then(function (result) {
     console.log(result);

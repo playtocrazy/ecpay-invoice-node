@@ -8,7 +8,13 @@ let base_param = {
 	RelateNumber:"PLEASE MODIFY" // 輸入合作特店自訂的編號，長度為30字元
 };
 
-let create = new ecpay_invoice();
+let create = new ecpay_invoice({
+	merchantInfo: {
+		merchantID: "2000132",
+        hashKey: "ejCk326UnaZWKisg",
+        hashIV: "q9jcZX8Ib9LM8wYk"
+	}
+});
 let res = create.query_client.ecpay_query_invoice_issue_invalid(parameters = base_param);
 res.then(function (result) {
     console.log(result);

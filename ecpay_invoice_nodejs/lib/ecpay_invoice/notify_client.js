@@ -12,8 +12,8 @@ const http = require('http');
 const https = require('https');
 
 class ECpayNotifyClient{
-    constructor(){
-        this.helper = new helper();
+    constructor(options){
+        this.helper = new helper(options);
         // this.verify_notify_api = new verify.ActParamVerify();
     }
 
