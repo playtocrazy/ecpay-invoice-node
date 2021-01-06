@@ -50,6 +50,9 @@ let base_param = {
 
 async function issueInvoice() {
     let create = new ecpay_invoice({
+        operationMode: "Test",
+        isProjectContractor: "N",
+        ignorePayment: [],
         merchantInfo: {
             merchantID: "2000132",
             hashKey: "ejCk326UnaZWKisg",
