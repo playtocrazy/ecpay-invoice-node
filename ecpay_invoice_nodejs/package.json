@@ -1,6 +1,6 @@
 {
   "name": "ecpay-invoice-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Ecpay Invoice SDK for Node based on ECPay/Invoice_Node.js",
   "main": "ecpay_invoice.js",
   "dependencies": {
@@ -17,6 +17,10 @@
     "node",
     "package"
   ],
-  "author": "playtocrazy@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/playtocrazy/ecpay-invoice-node.git"
+  },
+  "author": "Richard Lin <playtocrazy@gmail.com> (https://github.com/playtocrazy)",
   "license": "ISC"
 }
