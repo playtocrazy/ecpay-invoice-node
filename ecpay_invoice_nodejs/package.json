@@ -1,7 +1,7 @@
 {
-  "name": "ecpay_invoice_nodejs",
+  "name": "ecpay-invoice-node",
   "version": "1.0.0",
-  "description": "綠界電子發票串接用SDK",
+  "description": "Ecpay Invoice SDK for Node based on ECPay/Invoice_Node.js",
   "main": "ecpay_invoice.js",
   "dependencies": {
     "elementtree": "^0.1.7",
@@ -17,6 +17,6 @@
     "node",
     "package"
   ],
-  "author": "ying.wu <ying.wu@opay.tw>",
+  "author": "playtocrazy@gmail.com",
   "license": "ISC"
 }
