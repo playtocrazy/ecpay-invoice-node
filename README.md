@@ -4,8 +4,11 @@
 
 ## The differences
 
-This repository forked from [ECPay/Invoice_Node.js](https://github.com/ECPay/Invoice_Node.js)
-and using parameters injection instead of XML configuration.  
+This repository forked from [ECPay/Invoice_Node.js](https://github.com/ECPay/Invoice_Node.js), but there're two major differences:
+
+1. Using parameters injection instead of XML configuration.  
+
+2. Transforming the response format from string to JSON.
 
 ## Install
 
