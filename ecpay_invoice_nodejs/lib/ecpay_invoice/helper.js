@@ -8,6 +8,7 @@ const url = require('url');
 const querystring = require('querystring');
 const http = require('http');
 const https = require('https');
+const iconv = require('iconv-lite');
 
 // const EventEmitter = require('events').EventEmitter;
 
@@ -221,6 +222,14 @@ class APIHelper {
        }
 
     }
-
+    getJsonResult(result, encoding = 'utf-8') {
+        let json = {}
+        const reaultString = iconv.decode(Buffer.concat(result), encoding)
+        reaultString.split("&").forEach(function(string) {
+            const [ key, value] = string.split("=")
+            json[key] = value
+        })
+        return json
+    }
 }
 module.exports = APIHelper;

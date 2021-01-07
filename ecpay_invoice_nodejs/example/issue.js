@@ -5,7 +5,7 @@
 const ecpay_invoice = require('../lib/ecpay_invoice.js');
 // 參數值為[PLEASE MODIFY]者，請在每次測試時給予獨特值
 let base_param = {
-	RelateNumber:"asc12323aasddFY", // 請帶30碼uid, ex: werntfg9os48trhw34etrwerh8ew2r
+	RelateNumber:"1234567890", // 請帶30碼uid, ex: werntfg9os48trhw34etrwerh8ew2r
 	CustomerID:"12124", // 客戶代號，長度為20字元
 	CustomerIdentifier:"12345678", // 統一編號，長度為8字元
 	CustomerName:"綠先生", // 客戶名稱，長度為20字元

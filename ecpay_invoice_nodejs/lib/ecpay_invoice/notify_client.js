@@ -53,9 +53,10 @@ class ECpayNotifyClient{
         //post from server
         let resp = this.helper.http_request('POST', api_url, params);
         // return post response
+        const _helper = this.helper
         return new Promise((resolve, reject) => {
             resp.then(function (result) {
-                return resolve(iconv.decode(Buffer.concat(result), 'utf-8'));
+                return resolve(_helper.getJsonResult(result));
             }).catch(function (err) {
                 reject(err);
             });

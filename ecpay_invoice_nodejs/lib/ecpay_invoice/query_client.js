@@ -86,12 +86,13 @@ class ECpayQueryClient{
         let api_url = verify_query_api.get_svc_url(apiname, this.helper.get_op_mode());
         // post from server
         let resp = this.helper.http_request('POST', api_url, params);
+        const _helper = this.helper
         return new Promise((resolve, reject) => {
             resp.then(function (result) {
                     if (big5_trans) {
-                        return resolve(iconv.decode(Buffer.concat(result), 'big5'));
+                        return resolve(_helper.getJsonResult(result, 'big5'));
                     } else {
-                        return resolve(iconv.decode(Buffer.concat(result), 'utf-8'));
+                        return resolve(_helper.getJsonResult(result));
                     }
 
             }).catch(function (err) {
