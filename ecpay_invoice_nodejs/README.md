@@ -53,7 +53,7 @@ let base_param = {
 };
 
 async function issueInvoice() {
-    let create = new ecpay_invoice({
+    let create = new ecpayInvoice({
         operationMode: "Test",
         isProjectContractor: "N",
         ignorePayment: [],

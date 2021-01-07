@@ -1,6 +1,6 @@
 {
   "name": "ecpay-invoice-node",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Ecpay Invoice SDK for Node based on ECPay/Invoice_Node.js",
   "main": "ecpay_invoice.js",
   "dependencies": {
